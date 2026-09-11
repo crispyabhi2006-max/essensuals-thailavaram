@@ -9,10 +9,10 @@ app.use(express.json());
 
 // MySQL connection
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Abhishek@20006",
-    database: "essensuals_salon"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect((err) => {
@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 
-const PORT = 5000;
+const PORT = process.env.port || 5000;
 app.post("/api/appointments", (req, res) => {
     const {
         name,
@@ -140,6 +140,6 @@ app.delete("/api/appointments/:id", (req, res) => {
     });
   });
 });
-app.listen(PORT, () => {
-    console.log(`Backend running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Backend running on port ${PORT}`);
 });
