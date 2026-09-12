@@ -204,7 +204,7 @@ const time = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0
   const phone = document.getElementById('book-phone')?.value;
 
   try {
-    const response = await fetch('http://localhost:5000/api/appointments', {
+    const response = await fetch('https://essensuals-thailavaram.onrender.com/api/appointments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
